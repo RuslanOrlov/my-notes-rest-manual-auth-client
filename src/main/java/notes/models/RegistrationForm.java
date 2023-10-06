@@ -1,6 +1,6 @@
 package notes.models;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -19,9 +19,10 @@ public class RegistrationForm {
 		return this.password.equals(this.confirm);
 	}
 	
-	public UserDtoClient toUser(PasswordEncoder encoder) {
+	public UserDtoClient toUser(/*PasswordEncoder encoder*/) {
 		return new UserDtoClient(
-				null, this.username, encoder.encode(this.password), this.password, this.email);
+				null, this.username, /*encoder.encode(this.password)*/this.password, 
+				this.password, this.email);
 	}
 	
 }

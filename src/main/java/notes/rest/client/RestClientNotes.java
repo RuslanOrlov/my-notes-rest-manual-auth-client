@@ -90,15 +90,15 @@ public class RestClientNotes {
 			}
 		});
 		
-		this.urlWithoutId 		= "http://localhost:8080/api/notes";
-		this.urlWithoutIdSort1 	= "http://localhost:8080/api/notes?sort={field}";
-		this.urlWithoutIdSort2 	= "http://localhost:8080/api/notes?sort={field}"
+		this.urlWithoutId 		= "http://localhost:8081/api/notes";
+		this.urlWithoutIdSort1 	= "http://localhost:8081/api/notes?sort={field}";
+		this.urlWithoutIdSort2 	= "http://localhost:8081/api/notes?sort={field}"
 														+ "&page={page}&size={size}";
-		this.urlWithId 			= "http://localhost:8080/api/notes/{id}";
-		this.urlCount 			= "http://localhost:8080/api/notes/count";
-		this.urlCountWithQuery 	= "http://localhost:8080/api/notes/count?value={value}";
-		this.urlQuery 			= "http://localhost:8080/api/notes?value={value}";
-		this.urlPagingQuery 	= "http://localhost:8080/api/notes?value={value}"
+		this.urlWithId 			= "http://localhost:8081/api/notes/{id}";
+		this.urlCount 			= "http://localhost:8081/api/notes/count";
+		this.urlCountWithQuery 	= "http://localhost:8081/api/notes/count?value={value}";
+		this.urlQuery 			= "http://localhost:8081/api/notes?value={value}";
+		this.urlPagingQuery 	= "http://localhost:8081/api/notes?value={value}"
 														+ "&offset={offset}&limit={limit}";
 	}
 	
@@ -294,7 +294,7 @@ public class RestClientNotes {
 		// Запрашиваем на сервере новый CSRF токен
 		CsrfToken csrfToken = 
 				this.restTemplate.getForObject(
-						"http://localhost:8080/api/csrf", MyCsrfToken.class);
+						"http://localhost:8081/api/csrf", MyCsrfToken.class);
 		
 		// Добавляем заголовок "X-CSRF-TOKEN" со значением запрошенного токена
 		httpHeaders.add("X-CSRF-TOKEN", csrfToken.getToken());
@@ -330,7 +330,7 @@ public class RestClientNotes {
 		// Запрашиваем на сервере новый CSRF токен
 		CsrfToken csrfToken = 
 				this.restTemplate.getForObject(
-						"http://localhost:8080/api/csrf", MyCsrfToken.class);
+						"http://localhost:8081/api/csrf", MyCsrfToken.class);
 		
 		// Добавляем заголовок "X-CSRF-TOKEN" со значением запрошенного токена
 		httpHeaders.add("X-CSRF-TOKEN", csrfToken.getToken());
@@ -367,7 +367,7 @@ public class RestClientNotes {
 		// Запрашиваем на сервере новый CSRF токен
 		CsrfToken csrfToken = 
 				this.restTemplate.getForObject(
-						"http://localhost:8080/api/csrf", MyCsrfToken.class);
+						"http://localhost:8081/api/csrf", MyCsrfToken.class);
 		
 		// Добавляем заголовок "X-CSRF-TOKEN" со значением запрошенного токена
 		httpHeaders.add("X-CSRF-TOKEN", csrfToken.getToken());
@@ -394,7 +394,7 @@ public class RestClientNotes {
 		// оба запроса выполняются с помощью "restTemplateHttpBasic". 
 		CsrfToken csrfToken = 
 				restTemplateHttpBasic.getForObject(
-						"http://localhost:8080/api/csrf", MyCsrfToken.class);
+						"http://localhost:8081/api/csrf", MyCsrfToken.class);
 		
 		// Добавляем заголовок "X-CSRF-TOKEN" со значением запрошенного токена
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -425,7 +425,7 @@ public class RestClientNotes {
 		// Запрашиваем на сервере новый CSRF токен
 		CsrfToken csrfToken = 
 				this.restTemplate.getForObject(
-						"http://localhost:8080/api/csrf", MyCsrfToken.class);
+						"http://localhost:8081/api/csrf", MyCsrfToken.class);
 		
 		// Добавляем заголовок "X-CSRF-TOKEN" со значением ранее запрошенного токена
 		httpHeaders.add("X-CSRF-TOKEN", csrfToken.getToken());

@@ -2,7 +2,7 @@ package notes.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+//import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -48,10 +48,9 @@ public class SecurityConfiguration {
     	return http
 				.authorizeHttpRequests( (authorizeHttpRequests) ->
 						authorizeHttpRequests
-							.requestMatchers("/notes-list", "/notes-list/**", 
-												"/api/notes", "/api/notes/**").authenticated()
+							.requestMatchers("/notes-list", "/notes-list/**").authenticated()
 							.requestMatchers("/", "/**").permitAll()
-							.requestMatchers(HttpMethod.POST, "/api/users").permitAll() )
+							/*.requestMatchers(HttpMethod.POST, "/api/users").permitAll()*/ )
 				
 				/*
 				 * Ниже следующая настройка исключает (отключает) защиту CSRF при выполнении 
@@ -62,7 +61,7 @@ public class SecurityConfiguration {
 				 *   "{"timestamp":"2023-08-30T12:51:25.411+00:00","status":403,"error":
 				 *   "Forbidden","message":"Forbidden","path":"/api/notes"}"
 				 * */
-				.csrf( (csrf) -> csrf.ignoringRequestMatchers("/api/users") )
+				//.csrf( (csrf) -> csrf.ignoringRequestMatchers("/api/users") )
 				
 				/* 
 				 * При отсутствии ниже следующей настройки ".httpBasic()" выходит ошибка: 

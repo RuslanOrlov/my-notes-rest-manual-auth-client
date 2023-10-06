@@ -41,8 +41,8 @@ public class RestClientUsers {
 			}
 		});
 		
-		this.url 		= "http://localhost:8080/api/users";
-		this.urlForUser = "http://localhost:8080/api/users?username={value}";
+		this.url 		= "http://localhost:8081/api/users";
+		this.urlForUser = "http://localhost:8081/api/users?username={value}";
 	}
 	
 	public UserDtoClient postUser(UserDtoClient user) {

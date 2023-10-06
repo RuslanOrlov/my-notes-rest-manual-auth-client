@@ -1,6 +1,6 @@
 package notes.controllers;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,11 +17,11 @@ import notes.rest.client.RestClientUsers;
 public class RegistrationController {
 	
 	private RestClientUsers restClientUsers;
-	private PasswordEncoder encoder;
+	//private PasswordEncoder encoder;
 	
-	public RegistrationController(RestClientUsers restClientUsers, PasswordEncoder encoder) {
+	public RegistrationController(RestClientUsers restClientUsers/*, PasswordEncoder encoder*/) {
 		this.restClientUsers = restClientUsers;
-		this.encoder = encoder;
+		//this.encoder = encoder;
 	}
 	
 	@GetMapping
@@ -39,7 +39,7 @@ public class RegistrationController {
 			return "registration";
 		}
 		
-		this.restClientUsers.postUser(form.toUser(encoder));
+		this.restClientUsers.postUser(form.toUser(/*encoder*/));
 		
 		return "redirect:/login";
 	}

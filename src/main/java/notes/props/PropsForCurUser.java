@@ -12,11 +12,11 @@ import notes.models.UserClient;
 @Component
 @Data
 public class PropsForCurUser {
-	// New Code For DTO
-	public /*User*/ UserClient getCurrentUser() {
+	
+	public UserClient getCurrentUser() {
 		Authentication authentication = 
 				SecurityContextHolder.getContext().getAuthentication();
-		return (/*User*/ UserClient) authentication.getPrincipal();
+		return (UserClient) authentication.getPrincipal();
 	}
 	
 	public String getAuthStringEncoded() {

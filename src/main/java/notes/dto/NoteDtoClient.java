@@ -22,4 +22,5 @@ public class NoteDtoClient {
 	
 	private Boolean isDeleted = false;
 	private LocalDateTime createdAt = LocalDateTime.now();
-	private LocalDateTime updatedAt;}
+	private LocalDateTime updatedAt;
+}
