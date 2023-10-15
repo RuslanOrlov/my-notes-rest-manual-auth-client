@@ -26,6 +26,7 @@ import jakarta.validation.Valid;
 import lombok.Data;
 //import lombok.extern.slf4j.Slf4j;
 import notes.dto.NoteDtoClient;
+import notes.props.PropsForCurUser;
 import notes.props.PropsForNote;
 import notes.rest.client.RestClientNotes;
 import notes.tools.PDFGenerator;
@@ -39,12 +40,27 @@ public class NotesController {
 	private RestClientNotes restClientNotes;
 	
 	private PropsForNote noteProps;
+	private PropsForCurUser userProps;
 	
-	public NotesController(RestClientNotes restClientNotes, PropsForNote noteProps) {
+	public NotesController(RestClientNotes restClientNotes, 
+							PropsForNote noteProps, 
+							PropsForCurUser userProps) {
 		this.restClientNotes = restClientNotes;
 		this.noteProps = noteProps;
+		this.userProps = userProps;
 	}
+	
+	/*
+	 * Ниже представлен метод, возвращающий признак того, 
+	 * аутентифицирован ли пользователь в приложении или нет
+	 * 
+	 * */
 
+	@ModelAttribute("isLoggedIn")
+	public Boolean isLoggedIn() {
+		return this.userProps.isLoggedIn();
+	}
+	
 	/*
 	 * Ниже представлены методы управления постраничным просмотром данных
 	 * 

@@ -5,11 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import notes.models.RegistrationForm;
+import notes.props.PropsForCurUser;
 import notes.rest.client.RestClientUsers;
 
 @Controller
@@ -17,11 +19,16 @@ import notes.rest.client.RestClientUsers;
 public class RegistrationController {
 	
 	private RestClientUsers restClientUsers;
-	//private PasswordEncoder encoder;
+	private PropsForCurUser userProps;
 	
-	public RegistrationController(RestClientUsers restClientUsers/*, PasswordEncoder encoder*/) {
+	public RegistrationController(RestClientUsers restClientUsers, PropsForCurUser userProps) {
 		this.restClientUsers = restClientUsers;
-		//this.encoder = encoder;
+		this.userProps = userProps;
+	}
+
+	@ModelAttribute("isLoggedIn")
+	public Boolean isLoggedIn() {
+		return this.userProps.isLoggedIn();
 	}
 	
 	@GetMapping
@@ -39,7 +46,7 @@ public class RegistrationController {
 			return "registration";
 		}
 		
-		this.restClientUsers.postUser(form.toUser(/*encoder*/));
+		this.restClientUsers.postUser(form.toUser());
 		
 		return "redirect:/login";
 	}

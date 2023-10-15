@@ -19,6 +19,11 @@ public class PropsForCurUser {
 		return (UserClient) authentication.getPrincipal();
 	}
 	
+	public boolean isLoggedIn() {
+		return SecurityContextHolder.getContext().getAuthentication().
+				getPrincipal() instanceof UserClient;
+	}
+	
 	public String getAuthStringEncoded() {
 		// Получаем имя текущего пользователя и его пароль
 		String username = this.getCurrentUser().getUsername();
